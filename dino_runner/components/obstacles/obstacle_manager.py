@@ -5,9 +5,14 @@ from dino_runner.components.obstacles.bird import Bird
 from dino_runner.utils.constants import SMALL_CACTUS, BIRD, LARGE_CACTUS, LARGE_CACTUS_Y_POS, SMALL_CACTUS_Y_POS
 
 list_obs = [
-Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS),
-Cactus(LARGE_CACTUS,LARGE_CACTUS_Y_POS),
-Bird(BIRD)
+Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS, 0),
+Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS, 1),
+Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS, 2),
+Cactus(LARGE_CACTUS,LARGE_CACTUS_Y_POS, 0), 
+Cactus(LARGE_CACTUS,LARGE_CACTUS_Y_POS, 1), 
+Cactus(LARGE_CACTUS,LARGE_CACTUS_Y_POS, 2), 
+Bird(BIRD, 0),
+Bird(BIRD, 1),
 ]
 
 class ObstacleManager:
@@ -16,7 +21,7 @@ class ObstacleManager:
 
     def update(self, game):
         if len(self.obstacles) == 0:
-            random_obs = random.randint(0,2)
+            random_obs = random.randint(0,7)
             self.obstacles.append(list_obs[random_obs])
 
         for obstacle in self.obstacles:
