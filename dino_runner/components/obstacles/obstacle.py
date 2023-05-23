@@ -11,6 +11,7 @@ class Obstacle:
 
     def update(self, game_speed, obstacles):
         self.rect.x -= game_speed
+        
 
         if self.rect.x < -self.rect.width:
             self.rect.x = SCREEN_WIDTH
