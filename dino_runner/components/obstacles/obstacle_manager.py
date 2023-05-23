@@ -2,27 +2,21 @@ import pygame
 import random
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.obstacles.bird import Bird
-from dino_runner.utils.constants import SMALL_CACTUS, BIRD, LARGE_CACTUS, LARGE_CACTUS_Y_POS, SMALL_CACTUS_Y_POS
-
-list_obs = [
-Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS, 0),
-Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS, 1),
-Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS, 2),
-Cactus(LARGE_CACTUS,LARGE_CACTUS_Y_POS, 0), 
-Cactus(LARGE_CACTUS,LARGE_CACTUS_Y_POS, 1), 
-Cactus(LARGE_CACTUS,LARGE_CACTUS_Y_POS, 2), 
-Bird(BIRD, 0),
-Bird(BIRD, 1),
-]
+from dino_runner.utils.constants import SMALL_CACTUS, SMALL_CACTUS_Y_POS, LARGE_CACTUS, LARGE_CACTUS_Y_POS, BIRD
 
 class ObstacleManager:
     def __init__(self):
         self.obstacles = []
 
     def update(self, game):
+        random_obs = random.randint(0,2)
         if len(self.obstacles) == 0:
-            random_obs = random.randint(0,7)
-            self.obstacles.append(list_obs[random_obs])
+            if random_obs == 0:
+                self.obstacles.append(Cactus(SMALL_CACTUS, SMALL_CACTUS_Y_POS))
+            elif random_obs == 1:
+                self.obstacles.append(Cactus(LARGE_CACTUS, LARGE_CACTUS_Y_POS))
+            elif random_obs == 2:
+                self.obstacles.append(Bird(BIRD))
 
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)

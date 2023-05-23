@@ -96,7 +96,7 @@ class Game:
 
 
         font = pygame.font.Font(FONT_STYLE, 22)
-        text = font.render("Press (S) to start playing", True, (0,0,0))
+        text = font.render("Press (SPACE) to start playing", True, (0,0,0))
         text_rect = text.get_rect()
         text_rect.center = (half_screen_width, half_screen_height)
         self.screen.blit(text, text_rect)
@@ -111,7 +111,7 @@ class Game:
                 self.playing = False
                 self.executing = False
             elif event.type == pygame.KEYDOWN:
-                if pygame.key.get_pressed()[pygame.K_s] and self.death_count == 0:
+                if pygame.key.get_pressed()[pygame.K_SPACE] and self.death_count == 0:
                     self.run()
-                elif pygame.key.get_pressed()[pygame.K_s]:
+                elif pygame.key.get_pressed()[pygame.K_SPACE]:
                     self.run()
