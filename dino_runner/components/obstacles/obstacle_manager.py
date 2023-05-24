@@ -2,7 +2,8 @@ import pygame
 import random
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.obstacles.bird import Bird
-from dino_runner.utils.constants import SMALL_CACTUS, SMALL_CACTUS_Y_POS, LARGE_CACTUS, LARGE_CACTUS_Y_POS, BIRD
+# from dino_runner.components.power_ups import power_up,hammer,shield
+from dino_runner.utils.constants import SMALL_CACTUS, SMALL_CACTUS_Y_POS, LARGE_CACTUS, LARGE_CACTUS_Y_POS, BIRD, HAMMER_TYPE, SHIELD_TYPE
 
 class ObstacleManager:
     def __init__(self):
@@ -22,12 +23,13 @@ class ObstacleManager:
             obstacle.update(game.game_speed, self.obstacles)
 
             if game.player.dino_rect.colliderect(obstacle.rect):
-                if not game.player.has_power_up:
+                if (game.player.type == SHIELD_TYPE and not random_obs == 2) or (game.player.type == HAMMER_TYPE and random_obs == 2)  or not game.player.has_power_up:
                     pygame.time.delay(500)
                     game.playing = False
                     game.death_count += 1
                     break
                 else:
+                    # print(game.player.type)
                     self.obstacles.remove(obstacle)
 
     def draw(self, screen):
