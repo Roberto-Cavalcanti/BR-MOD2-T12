@@ -49,7 +49,7 @@ class Dinosaur:
 
     def duck(self):
         self.dino_duck = False
-        self.image = DUCKING[0] if self.step_index < 5 else DUCKING[1]
+        self.image = DUCK_IMG[self.type][self.step_index//5]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.y = Y_POS_DUCK
         self.dino_rect.x = X_POS
