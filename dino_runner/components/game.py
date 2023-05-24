@@ -20,6 +20,7 @@ class Game:
         self.obstacle_manager = ObstacleManager()
         self.death_count = 0
         self.score = 0
+        self.record = 0
 
     def run(self):
         # Game loop: events - update - draw
@@ -57,13 +58,13 @@ class Game:
 
     def update_score(self):
         self.score+=1
-
-        if self.score%100 == 0:
-            self.game_speed+=5
+        if self.score <=800:
+            if self.score%100 == 0:
+                self.game_speed+=5
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((255, 255, 255))
+        self.fase()
         self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
@@ -71,9 +72,15 @@ class Game:
         pygame.display.update()
         pygame.display.flip()
 
+    def fase(self):
+        if self.score < 500:
+            self.screen.fill((255,255,255))
+        else: 
+            self.screen.fill((0,0,0))
+
     def draw_score(self):
         font = pygame.font.Font(FONT_STYLE, 22)
-        text = font.render(f"Score: {self.score}", True, (0,0,0))
+        text = font.render(f"Score: {self.score}", True, (0,255,0))
         text_rect = text.get_rect()
         text_rect.center = (1000, 50)
 
@@ -87,31 +94,36 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+    
+    def msg_menu(self, text, Y , font_size, color):
+        half_screen_width = SCREEN_WIDTH //2
+        font = pygame.font.Font(FONT_STYLE, font_size)
+        text = font.render(text, True, color)
+        text_rect = text.get_rect()
+        text_rect.center = (half_screen_width, Y)
+
+        self.screen.blit(text, text_rect)
 
     def show_menu(self):
         self.screen.fill((255,255,255))
-
         half_screen_height = SCREEN_HEIGHT //2
-        half_screen_width = SCREEN_WIDTH //2
+        if self.score > self.record:
+            self.msg_menu(f"Novo record!", half_screen_height - 50, 50, (255,0,0))
 
-
-        font = pygame.font.Font(FONT_STYLE, 22)
-        text = font.render("Press (SPACE) to start playing", True, (0,0,0))
-        text_rect = text.get_rect()
-        text_rect.center = (half_screen_width, half_screen_height)
-        self.screen.blit(text, text_rect)
+        self.msg_menu("Press (SPACE) to start playing", half_screen_height, 22,(0,0,0))
+        if self.death_count > 0:
+            self.msg_menu(f"Partidas jogadas:  {self.death_count}", half_screen_height + 30, 18,(0,0,255))
+            self.msg_menu(f"Pontuação atual:  {self.score}", half_screen_height + 55, 18,(0,0,255))
 
         pygame.display.update()
-
         self.handle_events_on_menu()
 
     def handle_events_on_menu(self):
         for event in pygame.event.get():
-            if event.type ==pygame.QUIT:
+            if event.type == pygame.QUIT:
                 self.playing = False
                 self.executing = False
             elif event.type == pygame.KEYDOWN:
-                if pygame.key.get_pressed()[pygame.K_SPACE] and self.death_count == 0:
-                    self.run()
-                elif pygame.key.get_pressed()[pygame.K_SPACE]:
+                if pygame.key.get_pressed()[pygame.K_SPACE]:
+                    self.record = self.score
                     self.run()
