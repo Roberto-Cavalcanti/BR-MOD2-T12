@@ -30,6 +30,8 @@ class Dinosaur:
     def run(self):
         self.image = RUN_IMG[self.type][self.step_index//5]
         self.ajuste()
+        self.dino_rect = self.image.get_rect()
+        self.dino_rect.x = X_POS
         if self.type == SHIELD_TYPE:
             self.dino_rect.y = Y_POS - 40
         else:
@@ -45,10 +47,12 @@ class Dinosaur:
         if self.dino_jump:
             self.dino_rect.y -= self.jump_vel * 4
             self.jump_vel -= 0.8
-
         if self.jump_vel < -JUMP_VEL:
             self.dino_jump = False
-            self.dino_rect.y =  Y_POS
+            if self.type == SHIELD_TYPE:
+                self.dino_rect.y = Y_POS - 40
+            else:
+                self.dino_rect.y = Y_POS
             self.jump_vel = JUMP_VEL
 
     def duck(self):

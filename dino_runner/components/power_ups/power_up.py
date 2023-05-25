@@ -10,7 +10,7 @@ class PowerUp:
         self.image = pygame.transform.scale(self.image,(16*2,16*2))
         self.rect = self.image.get_rect()
         self.rect.x = SCREEN_WIDTH + random.randint(800,1000)
-        self.rect.y = random.randint(125,175)
+        self.rect.y = random.randint(125,155)
 
         self.start_time = 0
         self.duration = random.randint(5,10)
