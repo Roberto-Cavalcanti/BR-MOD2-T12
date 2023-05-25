@@ -14,47 +14,48 @@ MUSIC_DIR = os.path.join(os.path.dirname(__file__), "..", "assets/Other/fundoMus
 
 SMALL_CACTUS_Y_POS = 325
 LARGE_CACTUS_Y_POS = 300
-BIRD_Y_POS = 250
+BIRD_Y_POS = 260
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
 HAMMER_TYPE = "hammer"
 
 # Assets Constants
-ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
+ICON = pygame.image.load(os.path.join(IMG_DIR, "Other/shield.png"))
 
 RUNNING = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/run1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/run2.png")),
 ]
 
 RUNNING_SHIELD = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/shield1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/shield2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/shield3.png")),
 ]
 
 RUNNING_HAMMER = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/run_hammer.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/run_hammer2.png")),
 ]
 
-JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
-JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
-JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
+JUMPING = pygame.image.load(os.path.join(IMG_DIR, "mario/jump_default.png"))
+JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "mario/jump_shield.png"))
+JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "mario/jump_hammer.png"))
 
 DUCKING = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/duck.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/duck2.png")),
 ]
 
 DUCKING_SHIELD = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/duck_shield.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/duck_shield.png")), #retirar esse
 ]
 
 DUCKING_HAMMER = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/duck_hammer.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "mario/duck_hammer.png")), #esse tbm
 ]
 
 SMALL_CACTUS = [
@@ -79,7 +80,7 @@ HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
-DINO_DEAD = pygame.image.load(os.path.join(IMG_DIR, 'Dino/DinoStart.png')) 
+# DINO_DEAD = pygame.image.load(os.path.join(IMG_DIR, 'Dino/DinoStart.png')) 
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 

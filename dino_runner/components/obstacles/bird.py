@@ -10,7 +10,7 @@ class Bird(Obstacle):
         if type == 0:
             self.rect.y = BIRD_Y_POS
         else:
-            self.rect.y = BIRD_Y_POS + 50 
+            self.rect.y = BIRD_Y_POS + 35
    
 
     def fly(self):
