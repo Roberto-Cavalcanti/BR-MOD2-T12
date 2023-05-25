@@ -1,6 +1,7 @@
 import pygame
 import os
 
+pygame.init()
 # Global Constants
 TITLE = "Dino Runner"
 SCREEN_HEIGHT = 600
@@ -9,6 +10,7 @@ FPS = 30
 FONT_STYLE = "freesansbold.ttf"
 
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
+MUSIC_DIR = os.path.join(os.path.dirname(__file__), "..", "assets/Other/fundoMusic.mp3")
 
 SMALL_CACTUS_Y_POS = 325
 LARGE_CACTUS_Y_POS = 300

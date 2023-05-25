@@ -1,6 +1,6 @@
 import pygame
-
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_STYLE, DEFAULT_TYPE
+from pygame import mixer
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, FONT_STYLE, DEFAULT_TYPE, MUSIC_DIR
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.power_ups.power_up_manager import PowerUpManager
@@ -42,6 +42,7 @@ class Game:
 
     def reset_game(self):
         self.player = Dinosaur()
+        mixer.music.play(-1)
         self.obstacle_manager.reset_obstacles()
         self.power_up_manager.reset_power_ups()
         self.game_speed = 20
@@ -125,6 +126,7 @@ class Game:
         self.screen.blit(text, text_rect)
 
     def show_menu(self):
+        pygame.mixer.music.load(MUSIC_DIR)
         self.screen.fill((255,255,255))
         half_screen_height = SCREEN_HEIGHT //2
         if self.score > self.record:
